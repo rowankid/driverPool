@@ -23,7 +23,7 @@ public class DriverPoolTest {
 	@Test
 	public void testInit() {
 		try {
-			pool.init();
+			//pool.init();
 			System.out.println("pool " + pool);
 			
 			ExecutorService executor = Executors.newFixedThreadPool(pool.getPoolProperties().getMaxSize());
@@ -35,7 +35,7 @@ public class DriverPoolTest {
 			for(PooledDriver driver : pool.getIdle()) {
 				System.out.println("name " + driver.getDriverName() + " object : " + driver);
 			}
-		} catch (PoolException | InterruptedException e) {
+		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		assertTrue(pool.getSize().get() > 0);

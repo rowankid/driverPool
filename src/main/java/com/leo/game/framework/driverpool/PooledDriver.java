@@ -5,10 +5,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.leo.game.framework.driverpool.driver.DriverCreater;
 
 public class PooledDriver {
-	
+
 	private String driverName;
 	
 	private DriverInterceptor handler;
@@ -70,9 +71,9 @@ public class PooledDriver {
      * 
      * @return driver;
      */
-	public PooledDriver initDriver() {
-		this.driver = new FirefoxDriver();
-		this.driver.get("http://sg.dipan.com");
+	public PooledDriver initDriver(DriverCreater creater) {
+		this.driver = creater.initFirefoxBrowser();
+		this.driver.get("http://www.baidu.com");
 		return this;
 	}
 	

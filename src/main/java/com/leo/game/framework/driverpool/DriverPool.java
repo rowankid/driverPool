@@ -5,10 +5,13 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
+import javax.annotation.PostConstruct;
+
 import org.openqa.selenium.WebDriverException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.leo.game.framework.driverpool.driver.DriverCreater;
 import com.leo.game.framework.driverpool.exception.PoolException;
 import com.leo.game.framework.driverpool.util.Constants;
 
@@ -21,6 +24,9 @@ public class DriverPool {
      */
     @Autowired
     private PoolConfiguration poolProperties;
+
+    @Autowired
+    private DriverCreater creater;
     
     /**
      * Carries the size of the pool, instead of relying on a queue implementation
@@ -79,6 +85,7 @@ public class DriverPool {
     			+ "; releasedCount:" + this.releasedCount;
     }
     
+    @PostConstruct
     public void init() throws PoolException, InterruptedException {
         
         //make space for 10 extra in case we flow over a bit
@@ -195,7 +202,7 @@ public class DriverPool {
     
 	protected PooledDriver createDriver() throws PoolException, InterruptedException {
 		PooledDriver driver = new PooledDriver(getDriverName(), this, this.getPoolProperties());
-		driver.initDriver();
+		driver.initDriver(creater);
     	return driver;
     }
 	

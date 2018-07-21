@@ -20,6 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<selenium.version>3.11.0</selenium.version>
 	</properties>
 	
 	<dependencies>
@@ -68,19 +69,19 @@
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-java</artifactId>
-		    <version>3.13.0</version>
+		    <version>${selenium.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-firefox-driver</artifactId>
-		    <version>3.13.0</version>
+		    <version>${selenium.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-chrome-driver -->
 		<dependency>
 		    <groupId>org.seleniumhq.selenium</groupId>
 		    <artifactId>selenium-chrome-driver</artifactId>
-		    <version>3.13.0</version>
+		    <version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
