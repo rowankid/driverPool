@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.leo.game.framework.driverpool.driver.DriverCreater;
+import com.leo.game.framework.driverpool.driver.WebDriverCreater;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SeleniumTest {
 	
 	@Autowired
-	DriverCreater driverUtil;
+	WebDriverCreater driverUtil;
 
 	@Test
 	public void openWebBrowser() {
