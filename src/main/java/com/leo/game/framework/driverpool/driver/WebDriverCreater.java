@@ -1,7 +1,12 @@
 package com.leo.game.framework.driverpool.driver;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -53,5 +58,34 @@ public class WebDriverCreater {
 		WebDriver driver = initFirefoxBrowser(poolConfig.getBrowserDriverPath(), 
 				poolConfig.getGlobalTimeout(), poolConfig.getWindowStyle(), poolConfig.isClearCookies());
 		return driver;
+	}
+	
+	public WebDriver initHeadlessChromeBrowser() {
+		System.out.println(System.currentTimeMillis() + " |  start");
+	    System.setProperty("webdriver.chrome.driver", "D:\\server\\chromeDriver243\\chromedriver.exe");
+		ChromeOptions chromeOptions = new ChromeOptions();
+	    chromeOptions.addArguments("--headless");
+	    chromeOptions.addArguments("--disable-gpu"); 
+	    WebDriver driver = new ChromeDriver(chromeOptions);
+	    return driver;
+	}
+
+	public WebDriver initPhantomjsBrowser() {
+		System.out.println(System.currentTimeMillis() + " |  start");
+        //设置必要参数
+        DesiredCapabilities dcaps = new DesiredCapabilities();
+        //ssl证书支持
+        dcaps.setCapability("acceptSslCerts", true);
+        //截屏支持
+        dcaps.setCapability("takesScreenshot", true);
+        //css搜索支持
+        dcaps.setCapability("cssSelectorsEnabled", true);
+        //js支持
+        dcaps.setJavascriptEnabled(true);
+        //驱动支持
+        dcaps.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,"D:\\server\\phantomjs\\phantomjs-2.1.1-windows\\bin\\phantomjs.exe");
+        //创建无界面浏览器对象
+        WebDriver driver = new PhantomJSDriver(dcaps);
+	    return driver;
 	}
 }

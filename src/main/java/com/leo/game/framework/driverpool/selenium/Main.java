@@ -16,7 +16,7 @@ public class Main {
 		
 		Main testAJAX = new Main();
 		WebDriverExecutor e = new WebDriverExecutor();
-		testAJAX.action(e::executeAJAX, driver, command);
+		//testAJAX.action(e::executeAJAX, driver, command);
 		testAJAX.action(e::executeJS, driver, command);
 	}
 }
