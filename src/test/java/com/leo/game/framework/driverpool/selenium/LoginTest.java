@@ -26,7 +26,9 @@ public class LoginTest {
 	
 	@Test
 	public void test() {
-		WebDriver driver =  driverUtil.initFirefoxBrowser(); //new FirefoxDriver();
+		//WebDriver driver =  driverUtil.initFirefoxBrowser(); //new FirefoxDriver();
+		//WebDriver driver =  driverUtil.initPhantomjsBrowser(); //new FirefoxDriver();
+		WebDriver driver =  driverUtil.initHeadlessChromeBrowser(); //new FirefoxDriver();
 		try {
 			String id = "wzdacyl6";
 			String pw = "a815728";
@@ -46,5 +48,4 @@ public class LoginTest {
 		}
 		assertTrue(true);
 	}
-
 }
